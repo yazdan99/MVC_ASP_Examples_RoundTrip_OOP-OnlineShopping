@@ -21,7 +21,7 @@ namespace MVC_ASP_RoundTrip_OOP_OnlineShopping.Models.DomainModels.POCO
         #region [- Select() -]
         public List<Product> Select()
         {
-            using (var context = new Models.DomainModels.DTO.EF.OnlineShoppingEntities())
+            using (var context = new OnlineShoppingEntities())
             {
                 try
                 {
@@ -75,12 +75,13 @@ namespace MVC_ASP_RoundTrip_OOP_OnlineShopping.Models.DomainModels.POCO
         public Product Find(int? id)
         {
             using (var context = new OnlineShoppingEntities())
-            //using ( OnlineShoppingEntities context = new OnlineShoppingEntities())
             {
                 try
                 {
-                    Product product = context.Product.Find(id);
-                    return product;
+                    Product ref_Product = new Product();
+                    ref_Product = context.Product.Find(id);
+                    int idcategory = ref_Product.Category.CategoryID;
+                    return ref_Product;
                 }
                 catch (Exception)
                 {

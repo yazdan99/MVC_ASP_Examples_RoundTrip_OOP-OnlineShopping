@@ -20,6 +20,7 @@ namespace MVC_ASP_RoundTrip_OOP_OnlineShopping.Models.DomainModels.DTO.EF
         public OnlineShoppingEntities()
             : base("name=OnlineShoppingEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
